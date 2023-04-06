@@ -17,18 +17,21 @@ public class AddressService {
     }
 
     public List<AddressEntity> getAllAddresses(){
-        return addressRepository.findAll();
+        return addressRepository.findAllAndIsDeleted();
     }
 
     public AddressEntity getAddressById(Long id){
-        return addressRepository.findById(id).orElse(null);
+        return addressRepository.findByIdAndIsDeleted(id);
     }
 
     public AddressEntity saveAddress(AddressEntity addressEntity){
         return addressRepository.save(addressEntity);
     }
     public void deleteAddress(Long id){
-        addressRepository.deleteById(id);
+        AddressEntity addressEntity = addressRepository.findById(id).get();
+        addressEntity.setDeleted(true);
+        addressRepository.save(addressEntity);
+
     }
 
 }

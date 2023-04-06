@@ -19,11 +19,11 @@ public class StudentService {
 
     public List<StudentEntity> getAllStudents()
     {
-        return studentRepository.findAll();
+        return studentRepository.findAllAndIsDeleted();
     }
 
     public StudentEntity getStudentById(Long id){
-        return studentRepository.findById(id).orElse(null);
+        return studentRepository.findByIdAndIsDeleted(id);
     }
 
     public StudentEntity saveStudent(StudentEntity studentEntity){
@@ -31,7 +31,10 @@ public class StudentService {
     }
 
     public void deleteStudent(Long id){
-        studentRepository.deleteById(id);
+
+        StudentEntity studentEntity = studentRepository.findById(id).get();
+        studentEntity.setDeleted(true);
+        studentRepository.save(studentEntity);
     }
 
 
