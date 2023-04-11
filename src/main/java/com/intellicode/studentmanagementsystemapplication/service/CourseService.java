@@ -1,7 +1,7 @@
-package com.intellicode.studentmanagementsystemapplication.Service;
+package com.intellicode.studentmanagementsystemapplication.service;
 
-import com.intellicode.studentmanagementsystemapplication.Entity.CourseEntity;
-import com.intellicode.studentmanagementsystemapplication.Repository.CourseRepository;
+import com.intellicode.studentmanagementsystemapplication.entity.CourseEntity;
+import com.intellicode.studentmanagementsystemapplication.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +17,11 @@ public class CourseService {
     }
 
     public List<CourseEntity> getAllCourse(){
-        return courseRepository.findAll();
+        return courseRepository.findAllAndIsDeleted();
     }
 
     public CourseEntity getCourseById(Long id){
-        return courseRepository.findById(id).orElse(null);
+        return courseRepository.findByIdAndIsDeleted(id);
     }
 
     public CourseEntity saveCourse(CourseEntity courseEntity){
@@ -29,6 +29,8 @@ public class CourseService {
     }
 
     public void deleteCourse(Long id){
-        courseRepository.deleteById(id);
+        CourseEntity courseEntity = courseRepository.findById(id).get();
+        courseEntity.setDeleted(true);
+        courseRepository.save(courseEntity);
     }
 }

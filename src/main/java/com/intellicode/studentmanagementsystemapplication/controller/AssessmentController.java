@@ -1,7 +1,7 @@
-package com.intellicode.studentmanagementsystemapplication.Controller;
+package com.intellicode.studentmanagementsystemapplication.controller;
 
-import com.intellicode.studentmanagementsystemapplication.Entity.AssessmentEntity;
-import com.intellicode.studentmanagementsystemapplication.Service.AssessmentService;
+import com.intellicode.studentmanagementsystemapplication.entity.AssessmentEntity;
+import com.intellicode.studentmanagementsystemapplication.service.AssessmentService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

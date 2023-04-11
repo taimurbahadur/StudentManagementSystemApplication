@@ -1,7 +1,7 @@
-package com.intellicode.studentmanagementsystemapplication.Controller;
+package com.intellicode.studentmanagementsystemapplication.controller;
 
-import com.intellicode.studentmanagementsystemapplication.Entity.AddressEntity;
-import com.intellicode.studentmanagementsystemapplication.Service.AddressService;
+import com.intellicode.studentmanagementsystemapplication.entity.AddressEntity;
+import com.intellicode.studentmanagementsystemapplication.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

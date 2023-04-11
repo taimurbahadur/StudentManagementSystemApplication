@@ -1,7 +1,7 @@
-package com.intellicode.studentmanagementsystemapplication.Controller;
+package com.intellicode.studentmanagementsystemapplication.controller;
 
-import com.intellicode.studentmanagementsystemapplication.Entity.StudentEntity;
-import com.intellicode.studentmanagementsystemapplication.Service.StudentService;
+import com.intellicode.studentmanagementsystemapplication.entity.StudentEntity;
+import com.intellicode.studentmanagementsystemapplication.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

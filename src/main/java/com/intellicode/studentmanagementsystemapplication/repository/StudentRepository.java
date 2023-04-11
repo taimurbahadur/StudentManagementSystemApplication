@@ -1,6 +1,6 @@
-package com.intellicode.studentmanagementsystemapplication.Repository;
+package com.intellicode.studentmanagementsystemapplication.repository;
 
-import com.intellicode.studentmanagementsystemapplication.Entity.StudentEntity;
+import com.intellicode.studentmanagementsystemapplication.entity.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
-    @Query("select s from StudentEntity s where s.isDeleted is null or s.isDeleted = false and s.id = :id")
+    @Query("select s from StudentEntity s where (s.isDeleted is null or s.isDeleted = false) and s.id = :id")
     StudentEntity findByIdAndIsDeleted(@Param("id") Long id);
 
     @Query("select s from StudentEntity s where s.isDeleted is null or s.isDeleted = false")

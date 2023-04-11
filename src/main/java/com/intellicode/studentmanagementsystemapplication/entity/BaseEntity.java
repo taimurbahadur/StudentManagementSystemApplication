@@ -1,4 +1,4 @@
-package com.intellicode.studentmanagementsystemapplication.Entity;
+package com.intellicode.studentmanagementsystemapplication.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
