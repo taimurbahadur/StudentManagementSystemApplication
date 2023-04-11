@@ -1,5 +1,6 @@
-package com.intellicode.studentmanagementsystemapplication.Entity;
+package com.intellicode.studentmanagementsystemapplication.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +14,20 @@ public class AddressEntity extends BaseEntity{
     private String street;
     private String city;
     private String country;
+
+    @OneToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private StudentEntity studentEntity;
+
+    public StudentEntity getStudentEntity() {
+        return studentEntity;
+    }
+
+    public void setStudentEntity(StudentEntity studentEntity) {
+        this.studentEntity = studentEntity;
+    }
+
+
 
     public AddressEntity() {
     }

@@ -1,7 +1,7 @@
-package com.intellicode.studentmanagementsystemapplication.Service;
+package com.intellicode.studentmanagementsystemapplication.service;
 
-import com.intellicode.studentmanagementsystemapplication.Entity.AssessmentEntity;
-import com.intellicode.studentmanagementsystemapplication.Repository.AssessmentRepository;
+import com.intellicode.studentmanagementsystemapplication.entity.AssessmentEntity;
+import com.intellicode.studentmanagementsystemapplication.repository.AssessmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +17,11 @@ public class AssessmentService {
     }
 
     public List<AssessmentEntity> getAllAssessments(){
-        return assessmentRepository.findAll();
+        return assessmentRepository.findAllAndIsDeleted();
     }
 
     public AssessmentEntity getAssessmentById(Long id){
-        return assessmentRepository.findById(id).orElse(null);
+        return assessmentRepository.findByIdAndIsDeleted(id);
     }
 
     public AssessmentEntity saveAssessment(AssessmentEntity assessmentEntity){
@@ -29,6 +29,8 @@ public class AssessmentService {
     }
 
     public void deleteAssessment(Long id){
-        assessmentRepository.deleteById(id);
+        AssessmentEntity assessmentEntity = assessmentRepository.findById(id).get();
+        assessmentEntity.setDeleted(true);
+        assessmentRepository.save(assessmentEntity);
     }
 }

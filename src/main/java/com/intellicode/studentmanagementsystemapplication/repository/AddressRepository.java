@@ -1,6 +1,6 @@
-package com.intellicode.studentmanagementsystemapplication.Repository;
+package com.intellicode.studentmanagementsystemapplication.repository;
 
-import com.intellicode.studentmanagementsystemapplication.Entity.AddressEntity;
+import com.intellicode.studentmanagementsystemapplication.entity.AddressEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface AddressRepository extends JpaRepository<AddressEntity, Long> {
-    @Query("select a from AddressEntity a where a.isDeleted is null or a.isDeleted = false and a.id = :id")
+    @Query("select a from AddressEntity a where (a.isDeleted is null or a.isDeleted = false) and a.id = :id")
     AddressEntity findByIdAndIsDeleted(@Param("id") Long id);
 
     @Query("select a from AddressEntity a where a.isDeleted is null or a.isDeleted = false")

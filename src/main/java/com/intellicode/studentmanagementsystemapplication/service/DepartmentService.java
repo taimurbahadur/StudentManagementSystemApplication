@@ -1,7 +1,7 @@
-package com.intellicode.studentmanagementsystemapplication.Service;
+package com.intellicode.studentmanagementsystemapplication.service;
 
-import com.intellicode.studentmanagementsystemapplication.Entity.DepartmentEntity;
-import com.intellicode.studentmanagementsystemapplication.Repository.DepartmentRepository;
+import com.intellicode.studentmanagementsystemapplication.entity.DepartmentEntity;
+import com.intellicode.studentmanagementsystemapplication.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +17,11 @@ public class DepartmentService {
     }
 
     public List<DepartmentEntity> getAllDepartment(){
-        return departmentRepository.findAll();
+        return departmentRepository.findAllAndIsDeleted();
     }
 
     public DepartmentEntity getDepartmentById(Long id){
-        return departmentRepository.findById(id).orElse(null);
+        return departmentRepository.findByIdAndIsDeleted(id);
     }
 
     public DepartmentEntity saveDepartment(DepartmentEntity departmentEntity){
@@ -29,6 +29,8 @@ public class DepartmentService {
     }
 
     public void deleteDepartment(Long id){
-        departmentRepository.deleteById(id);
+        DepartmentEntity departmentEntity = departmentRepository.findById(id).get();
+        departmentEntity.setDeleted(true);
+        departmentRepository.save(departmentEntity);
     }
 }

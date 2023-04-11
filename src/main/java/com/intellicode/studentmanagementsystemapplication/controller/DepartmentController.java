@@ -1,7 +1,7 @@
-package com.intellicode.studentmanagementsystemapplication.Controller;
+package com.intellicode.studentmanagementsystemapplication.controller;
 
-import com.intellicode.studentmanagementsystemapplication.Entity.DepartmentEntity;
-import com.intellicode.studentmanagementsystemapplication.Service.DepartmentService;
+import com.intellicode.studentmanagementsystemapplication.entity.DepartmentEntity;
+import com.intellicode.studentmanagementsystemapplication.service.DepartmentService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

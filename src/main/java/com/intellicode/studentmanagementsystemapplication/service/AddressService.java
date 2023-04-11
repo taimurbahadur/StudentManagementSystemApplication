@@ -1,7 +1,7 @@
-package com.intellicode.studentmanagementsystemapplication.Service;
+package com.intellicode.studentmanagementsystemapplication.service;
 
-import com.intellicode.studentmanagementsystemapplication.Entity.AddressEntity;
-import com.intellicode.studentmanagementsystemapplication.Repository.AddressRepository;
+import com.intellicode.studentmanagementsystemapplication.entity.AddressEntity;
+import com.intellicode.studentmanagementsystemapplication.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +31,6 @@ public class AddressService {
         AddressEntity addressEntity = addressRepository.findById(id).get();
         addressEntity.setDeleted(true);
         addressRepository.save(addressEntity);
-
     }
 
 }
