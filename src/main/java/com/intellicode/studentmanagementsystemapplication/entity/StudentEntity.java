@@ -14,6 +14,8 @@ public class StudentEntity extends BaseEntity {
     private String name;
     private Date dob;
     private String gender;
+//    private String gender1;
+
 
     @OneToOne(mappedBy = "studentEntity", cascade = CascadeType.ALL)
 
