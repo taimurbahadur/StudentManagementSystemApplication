@@ -2,7 +2,6 @@ package com.intellicode.studentmanagementsystemapplication.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-
 import java.util.HashSet;
 import java.util.Set;
 
