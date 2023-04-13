@@ -15,7 +15,28 @@ public class StudentEntity extends BaseEntity {
     private Date dob;
     private String gender;
 
-    @OneToOne(mappedBy = "studentEntity", cascade = CascadeType.ALL)
+    // Bidirectional one-to-many relation for Student and StudentHasCourse
+
+    @OneToMany(mappedBy = "studentEntity")
+    @JsonIgnoreProperties("studentEntity")
+    private Set<StudentHasCourse> studentHasCourses = new HashSet<>();
+
+    public Set<StudentHasCourse> getStudentHasCourses() {
+        return studentHasCourses;
+    }
+
+    public void setStudentHasCourses(Set<StudentHasCourse> studentHasCourses) {
+        this.studentHasCourses = studentHasCourses;
+    }
+
+    public StudentEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, Set<StudentHasCourse> studentHasCourses) {
+        super(createdDate, updatedDate, isDeleted, updatedBy, createdBy);
+        this.studentHasCourses = studentHasCourses;
+    }
+
+    // Bidirectional one-to-one relation for Students and Address
+    @OneToOne
+    @JoinColumn(name = "address_id", nullable = false)
 
     private AddressEntity addressEntity;
 
@@ -36,38 +57,23 @@ public class StudentEntity extends BaseEntity {
         this.addressEntity = addressEntity;
     }
 
-    @OneToMany(mappedBy = "studentEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<DepartmentEntity> departmentEntity = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("studentEntity")
 
-    public Set<DepartmentEntity> getDepartmentEntities() {
+    private DepartmentEntity departmentEntity;
+
+    public DepartmentEntity getDepartmentEntity() {
         return departmentEntity;
     }
 
-    public void setDepartmentEntities(Set<DepartmentEntity> departmentEntities) {
-        this.departmentEntity = departmentEntities;
+    public void setDepartmentEntity(DepartmentEntity departmentEntity) {
+        this.departmentEntity = departmentEntity;
     }
 
-    public StudentEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, Set<DepartmentEntity> departmentEntities) {
+    public StudentEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, DepartmentEntity departmentEntity) {
         super(createdDate, updatedDate, isDeleted, updatedBy, createdBy);
-        this.departmentEntity = departmentEntities;
-    }
-
-    @ManyToMany
-    @JoinTable(joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
-    @JsonIgnoreProperties("students")
-    private List<CourseEntity> courseEntity = new ArrayList<>();
-
-    public List<CourseEntity> getCourseEntity() {
-        return courseEntity;
-    }
-
-    public void setCourseEntity(List<CourseEntity> courseEntity) {
-        this.courseEntity = courseEntity;
-    }
-
-    public StudentEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, List<CourseEntity> courseEntity) {
-        super(createdDate, updatedDate, isDeleted, updatedBy, createdBy);
-        this.courseEntity = courseEntity;
+        this.departmentEntity = departmentEntity;
     }
 
     public StudentEntity(){

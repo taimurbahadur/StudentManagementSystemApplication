@@ -1,5 +1,6 @@
 package com.intellicode.studentmanagementsystemapplication.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -13,23 +14,39 @@ public class AssessmentEntity extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private int marks;
+//    private int marks;
 
-    // Bidirectional one-to-many relation for Assessments and Courses
-    @OneToMany(mappedBy = "assessmentEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<CourseEntity> courseEntitySet = new HashSet<>();
+    // Bidirectional one-to-many relation for Assessments and CourseHasAssessment
 
-    public Set<CourseEntity> getCourseEntitySet() {
-        return courseEntitySet;
+    @OneToMany(mappedBy = "assessmentEntity")
+    @JsonIgnoreProperties("studentEntity")
+    private Set<CourseHasAssessment> courseHasAssessments = new HashSet<>();
+
+    public Set<CourseHasAssessment> getCourseHasAssessments() {
+        return courseHasAssessments;
     }
 
-    public void setCourseEntitySet(Set<CourseEntity> courseEntitySet) {
-        this.courseEntitySet = courseEntitySet;
+    public void setCourseHasAssessments(Set<CourseHasAssessment> courseHasAssessments) {
+        this.courseHasAssessments = courseHasAssessments;
     }
 
-    public AssessmentEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, Set<CourseEntity> courseEntitySet) {
+    public AssessmentEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, Set<CourseHasAssessment> courseHasAssessments) {
         super(createdDate, updatedDate, isDeleted, updatedBy, createdBy);
-        this.courseEntitySet = courseEntitySet;
+        this.courseHasAssessments = courseHasAssessments;
+    }
+
+    // Bidirectional many-to-one relation for Assessments and Courses
+    @ManyToOne
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("assessmentEntities")
+    private CourseEntity courseEntity;
+
+    public CourseEntity getCourseEntity() {
+        return courseEntity;
+    }
+
+    public void setCourseEntity(CourseEntity courseEntity) {
+        this.courseEntity = courseEntity;
     }
 
     public AssessmentEntity() {
@@ -38,7 +55,7 @@ public class AssessmentEntity extends BaseEntity{
     public AssessmentEntity(Long id, String name, int marks) {
         this.id = id;
         this.name = name;
-        this.marks = marks;
+//        this.marks = marks;
     }
 
     public Long getId() {
@@ -57,11 +74,11 @@ public class AssessmentEntity extends BaseEntity{
         this.name = name;
     }
 
-    public int getMarks() {
-        return marks;
-    }
+//    public int getMarks() {
+//        return marks;
+//    }
 
-    public void setMarks(int marks) {
-        this.marks = marks;
-    }
+//    public void setMarks(int marks) {
+//        this.marks = marks;
+//    }
 }

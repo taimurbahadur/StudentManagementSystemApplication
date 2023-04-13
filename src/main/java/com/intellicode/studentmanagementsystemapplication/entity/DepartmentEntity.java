@@ -1,8 +1,11 @@
 package com.intellicode.studentmanagementsystemapplication.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "department")
@@ -12,40 +15,41 @@ public class DepartmentEntity extends BaseEntity{
     private Long id;
     private String name;
 
-    // Bidirectional many-to-one relation for Department and Courses
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", nullable = false)
-    private CourseEntity courseEntity;
-
-    public CourseEntity getCourseEntity() {
-        return courseEntity;
-    }
-
-    public void setCourseEntity(CourseEntity courseEntity) {
-        this.courseEntity = courseEntity;
-    }
-
-    public DepartmentEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, CourseEntity courseEntity) {
-        super(createdDate, updatedDate, isDeleted, updatedBy, createdBy);
-        this.courseEntity = courseEntity;
-    }
-
     // Bidirectional many-to-one relation for Department and Students
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id", nullable = false)
-    private StudentEntity studentEntity;
+    @OneToMany(mappedBy = "departmentEntity")
+    @JsonIgnoreProperties("departmentEntity")
+    private Set<StudentEntity> studentEntities = new HashSet<>();
 
-    public StudentEntity getStudentEntity() {
-        return studentEntity;
+    public Set<StudentEntity> getStudentEntities() {
+        return studentEntities;
     }
 
-    public void setStudentEntity(StudentEntity studentEntity) {
-        this.studentEntity = studentEntity;
+    public void setStudentEntities(Set<StudentEntity> studentEntities) {
+        this.studentEntities = studentEntities;
     }
 
-    public DepartmentEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, StudentEntity studentEntity) {
+
+
+// Bidirectional one-to-many relation for Department and Courses
+
+    @OneToMany(mappedBy = "departmentEntity")
+    @JsonIgnoreProperties("departmentEntity")
+    private Set<CourseEntity> courseEntities = new HashSet<>();
+
+    public Set<CourseEntity> getCourseEntities() {
+        return courseEntities;
+    }
+
+    public void setCourseEntities(Set<CourseEntity> courseEntities) {
+        this.courseEntities = courseEntities;
+    }
+
+    public DepartmentEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, Long id, String name, Set<StudentEntity> studentEntities, Set<CourseEntity> courseEntities) {
         super(createdDate, updatedDate, isDeleted, updatedBy, createdBy);
-        this.studentEntity = studentEntity;
+        this.id = id;
+        this.name = name;
+        this.studentEntities = studentEntities;
+        this.courseEntities = courseEntities;
     }
 
     public DepartmentEntity() {

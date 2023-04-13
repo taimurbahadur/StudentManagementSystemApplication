@@ -4,6 +4,7 @@ import com.intellicode.studentmanagementsystemapplication.entity.AddressEntity;
 import com.intellicode.studentmanagementsystemapplication.entity.StudentEntity;
 import com.intellicode.studentmanagementsystemapplication.mapper.AddressMapper;
 import com.intellicode.studentmanagementsystemapplication.mapper.StudentMapper;
+import com.intellicode.studentmanagementsystemapplication.repository.CourseRepository;
 import com.intellicode.studentmanagementsystemapplication.repository.StudentRepository;
 import com.intellicode.studentmanagementsystemapplication.dto.StudentDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,11 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    private StudentDto studentDto;
+    @Autowired
+    private CourseRepository courseRepository;
+
+//    @Autowired
+//    private StudentMapper studentMapper;
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
@@ -48,6 +53,13 @@ public class StudentService {
         return studentRepository.save(studentEntity);
     }
 
+    public void deleteStudent(Long id){
+
+        StudentEntity studentEntity = studentRepository.findById(id).get();
+        studentEntity.setDeleted(true);
+        studentRepository.save(studentEntity);
+    }
+
 //    public StudentDto saveStudent(StudentDto studentDto){
 //        StudentEntity studentEntity = new StudentEntity();
 //        StudentMapper studentMapper = new StudentMapper();
@@ -66,12 +78,7 @@ public class StudentService {
 //        return studentDto;
 //    }
 
-    public void deleteStudent(Long id){
 
-        StudentEntity studentEntity = studentRepository.findById(id).get();
-        studentEntity.setDeleted(true);
-        studentRepository.save(studentEntity);
-    }
 
 
 }

@@ -10,7 +10,7 @@ public class CourseMapper {
         CourseDto courseDto = new CourseDto();
         courseDto.setId(courseEntity.getId());
         courseDto.setName(courseEntity.getName());
-        courseDto.setGrade(courseEntity.getGrade());
+//        courseDto.setGrade(courseEntity.getGrade());
         return courseDto;
     }
 
@@ -19,7 +19,7 @@ public class CourseMapper {
         CourseEntity courseEntity = new CourseEntity();
         courseEntity.setId(courseDto.getId());
         courseEntity.setName(courseDto.getName());
-        courseEntity.setGrade(courseDto.getGrade());
+//        courseEntity.setGrade(courseDto.getGrade());
         return courseEntity;
     }
 }

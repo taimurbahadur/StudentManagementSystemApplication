@@ -10,7 +10,7 @@ public class AssessmentMapper {
         AssessmentDto assessmentDto = new AssessmentDto();
         assessmentDto.setId(assessmentEntity.getId());
         assessmentDto.setName(assessmentEntity.getName());
-        assessmentDto.setMarks(assessmentEntity.getMarks());
+//        assessmentDto.setMarks(assessmentEntity.getMarks());
         return assessmentDto;
     }
 
@@ -19,7 +19,7 @@ public class AssessmentMapper {
         AssessmentEntity assessmentEntity = new AssessmentEntity();
         assessmentEntity.setId(assessmentDto.getId());
         assessmentEntity.setName(assessmentDto.getName());
-        assessmentEntity.setMarks(assessmentDto.getMarks());
+//        assessmentEntity.setMarks(assessmentDto.getMarks());
         return assessmentEntity;
     }
 }

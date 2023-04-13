@@ -3,9 +3,7 @@ package com.intellicode.studentmanagementsystemapplication.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "course")
@@ -14,11 +12,27 @@ public class CourseEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String grade;
+//    private String grade;
+
+    // Bidirectional one-to-many relation for Course and StudentHasCourse
+
+    @OneToMany(mappedBy = "courseEntity")
+    @JsonIgnoreProperties("courseEntity")
+    private Set<StudentHasCourse> studentHasCourses = new HashSet<>();
+
+    public Set<StudentHasCourse> getStudentHasCourses() {
+        return studentHasCourses;
+    }
+
+    public void setStudentHasCourses(Set<StudentHasCourse> studentHasCourses) {
+        this.studentHasCourses = studentHasCourses;
+    }
+
 
     // Bidirectional many-to-one relation for Courses and Department
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "department_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("courseEntity")
     private DepartmentEntity departmentEntity;
 
     public DepartmentEntity getDepartmentEntity() {
@@ -34,40 +48,23 @@ public class CourseEntity extends BaseEntity {
         this.departmentEntity = departmentEntity;
     }
 
-    // Bidirectional many-to-one relation for Courses and Assessments
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "assessment_id", nullable = false)
-    private AssessmentEntity assessmentEntity;
+    // Bidirectional one-to-many relation for Courses and Assessments
 
-    public AssessmentEntity getAssessmentEntity() {
-        return assessmentEntity;
+    @OneToMany(mappedBy = "courseEntity")
+    @JsonIgnoreProperties("courseEntity")
+    private Set<AssessmentEntity> assessmentEntities = new HashSet<>();
+
+    public Set<AssessmentEntity> getAssessmentEntities() {
+        return assessmentEntities;
     }
 
-    public void setAssessmentEntity(AssessmentEntity assessmentEntity) {
-        this.assessmentEntity = assessmentEntity;
+    public void setAssessmentEntities(Set<AssessmentEntity> assessmentEntities) {
+        this.assessmentEntities = assessmentEntities;
     }
 
-    public CourseEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, AssessmentEntity assessmentEntity) {
+    public CourseEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, Set<AssessmentEntity> assessmentEntities) {
         super(createdDate, updatedDate, isDeleted, updatedBy, createdBy);
-        this.assessmentEntity = assessmentEntity;
-    }
-
-    // Bidirectional many-to-many relation for Students and Courses
-    @ManyToMany(mappedBy = "courseEntity", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("courses")
-    private List<StudentEntity> students = new ArrayList<>();
-
-    public CourseEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, List<StudentEntity> students) {
-        super(createdDate, updatedDate, isDeleted, updatedBy, createdBy);
-        this.students = students;
-    }
-
-    public List<StudentEntity> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<StudentEntity> students) {
-        this.students = students;
+        this.assessmentEntities = assessmentEntities;
     }
 
     public CourseEntity() {
@@ -76,7 +73,7 @@ public class CourseEntity extends BaseEntity {
     public CourseEntity(Long id, String name, String grade) {
         this.id = id;
         this.name = name;
-        this.grade = grade;
+//        this.grade = grade;
     }
 
     public Long getId() {
@@ -95,11 +92,11 @@ public class CourseEntity extends BaseEntity {
         this.name = name;
     }
 
-    public String getGrade() {
-        return grade;
-    }
+//    public String getGrade() {
+//        return grade;
+//    }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
+//    public void setGrade(String grade) {
+//        this.grade = grade;
+//    }
 }

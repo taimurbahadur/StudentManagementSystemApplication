@@ -3,6 +3,8 @@ package com.intellicode.studentmanagementsystemapplication.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "address")
 public class AddressEntity extends BaseEntity{
@@ -15,8 +17,8 @@ public class AddressEntity extends BaseEntity{
     private String city;
     private String country;
 
-    @OneToOne
-    @JoinColumn(name = "student_id", nullable = false)
+    @OneToOne(mappedBy = "addressEntity", cascade = CascadeType.ALL)
+
     private StudentEntity studentEntity;
 
     public StudentEntity getStudentEntity() {
@@ -27,7 +29,10 @@ public class AddressEntity extends BaseEntity{
         this.studentEntity = studentEntity;
     }
 
-
+    public AddressEntity(Date createdDate, Date updatedDate, Boolean isDeleted, Integer updatedBy, Integer createdBy, StudentEntity studentEntity) {
+        super(createdDate, updatedDate, isDeleted, updatedBy, createdBy);
+        this.studentEntity = studentEntity;
+    }
 
     public AddressEntity() {
     }
