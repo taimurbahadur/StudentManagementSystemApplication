@@ -3,8 +3,9 @@ package com.intellicode.studentmanagementsystemapplication.dto;
 import lombok.Data;
 
 @Data
-public class AssessmentDto {
+public class StudentHasCourseDto {
+
     private Long id;
-    private String name;
-//    private int marks;
+    private String grade;
+
 }

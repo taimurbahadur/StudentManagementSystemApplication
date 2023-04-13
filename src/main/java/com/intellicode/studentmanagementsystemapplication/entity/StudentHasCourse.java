@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "student_course")
-public class StudentHasCourse {
+public class StudentHasCourse extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,6 +54,7 @@ public class StudentHasCourse {
     @ManyToOne
     @JoinColumn(name = "students_id", referencedColumnName = "id")
     @JsonIgnoreProperties("studentHasCourses")
+
     private StudentEntity studentEntity;
 
     public StudentEntity getStudentEntity() {

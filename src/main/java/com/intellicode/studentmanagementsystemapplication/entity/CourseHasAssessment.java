@@ -5,13 +5,13 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "course_assessment")
-public class CourseHasAssessment {
+public class CourseHasAssessment extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int marks;
 
-    // Bidirectional many-to-one relation for CourseHasAssessment and StudentHasCourse
+    // Bidirectional many-to-one relation for CourseHasAssessment and Assessment
     @ManyToOne
     @JoinColumn(name = "assessment_id", referencedColumnName = "id")
     private AssessmentEntity assessmentEntity;
