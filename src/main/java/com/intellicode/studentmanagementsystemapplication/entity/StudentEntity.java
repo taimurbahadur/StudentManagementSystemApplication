@@ -57,6 +57,7 @@ public class StudentEntity extends BaseEntity {
         this.addressEntity = addressEntity;
     }
 
+    // Bidirectional one-to-one relation for Students and Department
     @ManyToOne
     @JoinColumn(name = "department_id", referencedColumnName = "id")
     @JsonIgnoreProperties("studentEntity")
