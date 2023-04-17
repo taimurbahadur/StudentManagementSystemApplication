@@ -19,20 +19,19 @@ public class StudentService {
     }
 
 
-    public List<StudentEntity> getAllStudents()
-    {
+    public List<StudentEntity> getAllStudents() {
         return studentRepository.findAllAndIsDeleted();
     }
 
-    public StudentEntity getStudentById(Long id){
+    public StudentEntity getStudentById(Long id) {
         return studentRepository.findByIdAndIsDeleted(id);
     }
 
-    public StudentEntity saveStudent(StudentEntity studentEntity){
+    public StudentEntity saveStudent(StudentEntity studentEntity) {
         return studentRepository.save(studentEntity);
     }
 
-    public void deleteStudent(Long id){
+    public void deleteStudent(Long id) {
 
         StudentEntity studentEntity = studentRepository.findById(id).get();
         studentEntity.setDeleted(true);

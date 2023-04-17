@@ -17,7 +17,4 @@ public interface StudentHasCourseRepository extends JpaRepository<StudentHasCour
     List<StudentHasCourse> findAllAndIsDeleted();
 
 
-
-
-
 }

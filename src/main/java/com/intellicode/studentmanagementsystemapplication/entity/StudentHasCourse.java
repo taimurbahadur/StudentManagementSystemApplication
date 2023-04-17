@@ -2,12 +2,13 @@ package com.intellicode.studentmanagementsystemapplication.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "student_course")
-public class StudentHasCourse extends BaseEntity{
+public class StudentHasCourse extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +19,7 @@ public class StudentHasCourse extends BaseEntity{
 
     @OneToMany(mappedBy = "studentHasCourse")
     @JsonIgnoreProperties("studentHasCourse")
-    private Set<CourseHasAssessment> courseHasAssessments =new HashSet<>();
+    private Set<CourseHasAssessment> courseHasAssessments = new HashSet<>();
 
     public Set<CourseHasAssessment> getCourseHasAssessments() {
         return courseHasAssessments;

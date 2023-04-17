@@ -19,22 +19,22 @@ public class StudentController {
     }
 
     @GetMapping
-    public List<StudentEntity> getAllStudents(){
+    public List<StudentEntity> getAllStudents() {
         return studentService.getAllStudents();
     }
 
     @GetMapping("/{id}")
-    public StudentEntity getStudentById(@PathVariable Long id){
+    public StudentEntity getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
 
     @PostMapping
-    public StudentEntity saveStudent(@RequestBody StudentEntity studentEntity){
+    public StudentEntity saveStudent(@RequestBody StudentEntity studentEntity) {
         return studentService.saveStudent(studentEntity);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable Long id){
+    public void deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
     }
 

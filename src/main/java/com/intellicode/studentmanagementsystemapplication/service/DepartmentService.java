@@ -16,19 +16,19 @@ public class DepartmentService {
         this.departmentRepository = departmentRepository;
     }
 
-    public List<DepartmentEntity> getAllDepartment(){
+    public List<DepartmentEntity> getAllDepartment() {
         return departmentRepository.findAllAndIsDeleted();
     }
 
-    public DepartmentEntity getDepartmentById(Long id){
+    public DepartmentEntity getDepartmentById(Long id) {
         return departmentRepository.findByIdAndIsDeleted(id);
     }
 
-    public DepartmentEntity saveDepartment(DepartmentEntity departmentEntity){
+    public DepartmentEntity saveDepartment(DepartmentEntity departmentEntity) {
         return departmentRepository.save(departmentEntity);
     }
 
-    public void deleteDepartment(Long id){
+    public void deleteDepartment(Long id) {
         DepartmentEntity departmentEntity = departmentRepository.findById(id).get();
         departmentEntity.setDeleted(true);
         departmentRepository.save(departmentEntity);

@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "assessment")
-public class AssessmentEntity extends BaseEntity{
+public class AssessmentEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

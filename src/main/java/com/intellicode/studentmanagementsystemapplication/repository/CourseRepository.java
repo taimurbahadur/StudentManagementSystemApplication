@@ -17,6 +17,4 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
     List<CourseEntity> findAllAndIsDeleted();
 
 
-
-
 }

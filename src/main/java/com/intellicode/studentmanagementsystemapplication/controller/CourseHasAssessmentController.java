@@ -17,22 +17,22 @@ public class CourseHasAssessmentController {
     }
 
     @GetMapping
-    public List<CourseHasAssessment> getAllCourseAssessment(){
+    public List<CourseHasAssessment> getAllCourseAssessment() {
         return courseHasAssessmentService.getAllCourseAssessment();
     }
 
     @GetMapping("/{id}")
-    public CourseHasAssessment getCourseAssessmentById(@PathVariable Long id){
+    public CourseHasAssessment getCourseAssessmentById(@PathVariable Long id) {
         return courseHasAssessmentService.getCourseAssessmentById(id);
     }
 
     @PostMapping
-    public CourseHasAssessment saveCourseAssessment(@RequestBody CourseHasAssessment courseHasAssessment){
+    public CourseHasAssessment saveCourseAssessment(@RequestBody CourseHasAssessment courseHasAssessment) {
         return courseHasAssessmentService.saveCourseAssessment(courseHasAssessment);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCourseAssessment(@PathVariable Long id){
+    public void deleteCourseAssessment(@PathVariable Long id) {
         courseHasAssessmentService.deleteCourseAssessment(id);
     }
 }

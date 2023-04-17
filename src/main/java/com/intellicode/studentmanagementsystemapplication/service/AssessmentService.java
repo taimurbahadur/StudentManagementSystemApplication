@@ -16,19 +16,19 @@ public class AssessmentService {
         this.assessmentRepository = assessmentRepository;
     }
 
-    public List<AssessmentEntity> getAllAssessments(){
+    public List<AssessmentEntity> getAllAssessments() {
         return assessmentRepository.findAllAndIsDeleted();
     }
 
-    public AssessmentEntity getAssessmentById(Long id){
+    public AssessmentEntity getAssessmentById(Long id) {
         return assessmentRepository.findByIdAndIsDeleted(id);
     }
 
-    public AssessmentEntity saveAssessment(AssessmentEntity assessmentEntity){
+    public AssessmentEntity saveAssessment(AssessmentEntity assessmentEntity) {
         return assessmentRepository.save(assessmentEntity);
     }
 
-    public void deleteAssessment(Long id){
+    public void deleteAssessment(Long id) {
         AssessmentEntity assessmentEntity = assessmentRepository.findById(id).get();
         assessmentEntity.setDeleted(true);
         assessmentRepository.save(assessmentEntity);

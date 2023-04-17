@@ -6,7 +6,7 @@ import com.intellicode.studentmanagementsystemapplication.entity.AssessmentEntit
 public class AssessmentMapper {
 
     // Convert Entity to DTO
-    public AssessmentDto mapToDto(AssessmentEntity assessmentEntity){
+    public AssessmentDto mapToDto(AssessmentEntity assessmentEntity) {
         AssessmentDto assessmentDto = new AssessmentDto();
         assessmentDto.setId(assessmentEntity.getId());
         assessmentDto.setName(assessmentEntity.getName());
@@ -15,7 +15,7 @@ public class AssessmentMapper {
     }
 
     // Convert DTO to Entity
-    public AssessmentEntity mapToEntity(AssessmentDto assessmentDto){
+    public AssessmentEntity mapToEntity(AssessmentDto assessmentDto) {
         AssessmentEntity assessmentEntity = new AssessmentEntity();
         assessmentEntity.setId(assessmentDto.getId());
         assessmentEntity.setName(assessmentDto.getName());

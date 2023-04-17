@@ -17,22 +17,22 @@ public class DepartmentController {
     }
 
     @GetMapping
-    public List<DepartmentEntity> getAllDeparment(){
+    public List<DepartmentEntity> getAllDeparment() {
         return departmentService.getAllDepartment();
     }
 
     @GetMapping("/{id}")
-    public DepartmentEntity getDepartmentById(@PathVariable Long id){
+    public DepartmentEntity getDepartmentById(@PathVariable Long id) {
         return departmentService.getDepartmentById(id);
     }
 
     @PostMapping
-    public DepartmentEntity saveDepartment(@RequestBody DepartmentEntity departmentEntity){
+    public DepartmentEntity saveDepartment(@RequestBody DepartmentEntity departmentEntity) {
         return departmentService.saveDepartment(departmentEntity);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteDepartment(@PathVariable Long id){
+    public void deleteDepartment(@PathVariable Long id) {
         departmentService.deleteDepartment(id);
     }
 }

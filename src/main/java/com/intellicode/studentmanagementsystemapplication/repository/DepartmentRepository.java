@@ -9,14 +9,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DepartmentRepository extends JpaRepository<DepartmentEntity,Long> {
+public interface DepartmentRepository extends JpaRepository<DepartmentEntity, Long> {
     @Query("select d from DepartmentEntity d where (d.isDeleted is null or d.isDeleted = false) and d.id = :id")
     DepartmentEntity findByIdAndIsDeleted(@Param("id") Long id);
 
     @Query("select d from DepartmentEntity d where d.isDeleted is null or d.isDeleted = false")
     List<DepartmentEntity> findAllAndIsDeleted();
-
-
 
 
 }

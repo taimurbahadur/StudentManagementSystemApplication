@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "address")
-public class AddressEntity extends BaseEntity{
+public class AddressEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

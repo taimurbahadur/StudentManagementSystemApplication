@@ -17,21 +17,24 @@ public class CourseController {
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
+
     @GetMapping
-    public List<CourseEntity> getAllCourse(){
+    public List<CourseEntity> getAllCourse() {
         return courseService.getAllCourse();
     }
+
     @GetMapping("/{id}")
-    public CourseEntity getCourseById(@PathVariable Long id){
+    public CourseEntity getCourseById(@PathVariable Long id) {
         return courseService.getCourseById(id);
     }
+
     @PostMapping
-    public CourseEntity saveCourse(@RequestBody CourseEntity courseEntity){
+    public CourseEntity saveCourse(@RequestBody CourseEntity courseEntity) {
         return courseService.saveCourse(courseEntity);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCourse(@PathVariable Long id){
+    public void deleteCourse(@PathVariable Long id) {
         courseService.deleteCourse(id);
     }
 }

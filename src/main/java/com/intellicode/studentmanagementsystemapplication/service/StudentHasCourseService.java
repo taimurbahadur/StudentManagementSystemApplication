@@ -14,24 +14,23 @@ public class StudentHasCourseService {
     @Autowired
     private StudentHasCourseRepository studentHasCourseRepository;
 
-    public List<StudentHasCourse> getAllStudentsCourse()
-    {
+    public List<StudentHasCourse> getAllStudentsCourse() {
         return studentHasCourseRepository.findAllAndIsDeleted();
     }
 
-    public StudentHasCourse getStudentCourseById(Long id){
+    public StudentHasCourse getStudentCourseById(Long id) {
         return studentHasCourseRepository.findByIdAndIsDeleted(id);
     }
 
-    public StudentHasCourse saveStudentCourse(StudentHasCourse studentHasCourse){
+    public StudentHasCourse saveStudentCourse(StudentHasCourse studentHasCourse) {
         return studentHasCourseRepository.save(studentHasCourse);
     }
 
-    public void deleteStudentCourse(Long id){
+    public void deleteStudentCourse(Long id) {
 
-    StudentHasCourse studentHasCourse = studentHasCourseRepository.findById(id).get();
-    studentHasCourse.setDeleted(true);
-    studentHasCourseRepository.save(studentHasCourse);
+        StudentHasCourse studentHasCourse = studentHasCourseRepository.findById(id).get();
+        studentHasCourse.setDeleted(true);
+        studentHasCourseRepository.save(studentHasCourse);
 
     }
 }

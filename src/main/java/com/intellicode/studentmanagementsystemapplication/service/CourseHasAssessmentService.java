@@ -14,20 +14,19 @@ public class CourseHasAssessmentService {
     @Autowired
     private CourseHasAssessmentRepository courseHasAssessmentRepository;
 
-    public List<CourseHasAssessment> getAllCourseAssessment()
-    {
+    public List<CourseHasAssessment> getAllCourseAssessment() {
         return courseHasAssessmentRepository.findAllAndIsDeleted();
     }
 
-    public CourseHasAssessment getCourseAssessmentById(Long id){
+    public CourseHasAssessment getCourseAssessmentById(Long id) {
         return courseHasAssessmentRepository.findByIdAndIsDeleted(id);
     }
 
-    public CourseHasAssessment saveCourseAssessment(CourseHasAssessment courseHasAssessment){
+    public CourseHasAssessment saveCourseAssessment(CourseHasAssessment courseHasAssessment) {
         return courseHasAssessmentRepository.save(courseHasAssessment);
     }
 
-    public void deleteCourseAssessment(Long id){
+    public void deleteCourseAssessment(Long id) {
 
         CourseHasAssessment courseHasAssessment = courseHasAssessmentRepository.findById(id).get();
         courseHasAssessment.setDeleted(true);

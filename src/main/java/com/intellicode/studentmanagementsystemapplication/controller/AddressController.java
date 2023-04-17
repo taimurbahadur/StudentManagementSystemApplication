@@ -18,21 +18,22 @@ public class AddressController {
     }
 
     @GetMapping
-    public List<AddressEntity> getAllAddresses(){
+    public List<AddressEntity> getAllAddresses() {
         return addressService.getAllAddresses();
     }
+
     @GetMapping("/{id}")
-    public AddressEntity getAddressById(@PathVariable Long id){
+    public AddressEntity getAddressById(@PathVariable Long id) {
         return addressService.getAddressById(id);
     }
 
     @PostMapping
-    public AddressEntity saveAddress(@RequestBody AddressEntity addressEntity){
+    public AddressEntity saveAddress(@RequestBody AddressEntity addressEntity) {
         return addressService.saveAddress(addressEntity);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAddress(@PathVariable Long id){
+    public void deleteAddress(@PathVariable Long id) {
         addressService.deleteAddress(id);
     }
 

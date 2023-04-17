@@ -20,22 +20,22 @@ public class StudentHasCourseController {
     }
 
     @GetMapping
-    public List<StudentHasCourse> getAllStudentsCourse(){
+    public List<StudentHasCourse> getAllStudentsCourse() {
         return studentHasCourseService.getAllStudentsCourse();
     }
 
     @GetMapping("/{id}")
-    public StudentHasCourse getStudentCourseById(@PathVariable Long id){
+    public StudentHasCourse getStudentCourseById(@PathVariable Long id) {
         return studentHasCourseService.getStudentCourseById(id);
     }
 
     @PostMapping
-    public StudentHasCourse saveStudentCourse(@RequestBody StudentHasCourse studentHasCourse){
+    public StudentHasCourse saveStudentCourse(@RequestBody StudentHasCourse studentHasCourse) {
         return studentHasCourseService.saveStudentCourse(studentHasCourse);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteStudentCourse(@PathVariable Long id){
+    public void deleteStudentCourse(@PathVariable Long id) {
         studentHasCourseService.deleteStudentCourse(id);
     }
 

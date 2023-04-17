@@ -6,7 +6,7 @@ import com.intellicode.studentmanagementsystemapplication.entity.DepartmentEntit
 public class DepartmentMapper {
 
     // Convert Entity to DTO
-    public DepartmentDto mapToDto(DepartmentEntity departmentEntity){
+    public DepartmentDto mapToDto(DepartmentEntity departmentEntity) {
         DepartmentDto departmentDto = new DepartmentDto();
         departmentDto.setId(departmentEntity.getId());
         departmentDto.setName(departmentEntity.getName());
@@ -14,7 +14,7 @@ public class DepartmentMapper {
     }
 
     // Convert DTO to Entity
-    public DepartmentEntity mapToEntity(DepartmentDto departmentDto){
+    public DepartmentEntity mapToEntity(DepartmentDto departmentDto) {
         DepartmentEntity departmentEntity = new DepartmentEntity();
         departmentEntity.setId(departmentDto.getId());
         departmentEntity.setName(departmentDto.getName());

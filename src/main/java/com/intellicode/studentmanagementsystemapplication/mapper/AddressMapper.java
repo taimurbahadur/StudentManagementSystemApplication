@@ -6,7 +6,7 @@ import com.intellicode.studentmanagementsystemapplication.entity.AddressEntity;
 public class AddressMapper {
 
     // Convert Entity to DTO
-    public AddressDto mapToDto(AddressEntity addressEntity){
+    public AddressDto mapToDto(AddressEntity addressEntity) {
         AddressDto addressDto = new AddressDto();
         addressDto.setId(addressEntity.getId());
         addressDto.setHouseNo(addressEntity.getHouseNo());
@@ -17,7 +17,7 @@ public class AddressMapper {
     }
 
     // Convert DTO to Entity
-    public AddressEntity mapToEntity(AddressDto addressDto){
+    public AddressEntity mapToEntity(AddressDto addressDto) {
         AddressEntity addressEntity = new AddressEntity();
         addressEntity.setId(addressDto.getId());
         addressEntity.setHouseNo(addressDto.getHouseNo());

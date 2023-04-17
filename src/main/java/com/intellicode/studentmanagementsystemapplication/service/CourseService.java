@@ -16,19 +16,19 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
-    public List<CourseEntity> getAllCourse(){
+    public List<CourseEntity> getAllCourse() {
         return courseRepository.findAllAndIsDeleted();
     }
 
-    public CourseEntity getCourseById(Long id){
+    public CourseEntity getCourseById(Long id) {
         return courseRepository.findByIdAndIsDeleted(id);
     }
 
-    public CourseEntity saveCourse(CourseEntity courseEntity){
+    public CourseEntity saveCourse(CourseEntity courseEntity) {
         return courseRepository.save(courseEntity);
     }
 
-    public void deleteCourse(Long id){
+    public void deleteCourse(Long id) {
         CourseEntity courseEntity = courseRepository.findById(id).get();
         courseEntity.setDeleted(true);
         courseRepository.save(courseEntity);

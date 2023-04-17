@@ -17,21 +17,22 @@ public class AssessmentController {
 
 
     @GetMapping
-    public List<AssessmentEntity> getAllAssessments(){
+    public List<AssessmentEntity> getAllAssessments() {
         return assessmentService.getAllAssessments();
     }
 
     @GetMapping("/{id}")
-    public AssessmentEntity getAssessmentById(@PathVariable Long id){
+    public AssessmentEntity getAssessmentById(@PathVariable Long id) {
         return assessmentService.getAssessmentById(id);
     }
 
     @PostMapping
-    public AssessmentEntity saveAssessment(@RequestBody AssessmentEntity assessmentEntity){
+    public AssessmentEntity saveAssessment(@RequestBody AssessmentEntity assessmentEntity) {
         return assessmentService.saveAssessment(assessmentEntity);
     }
+
     @DeleteMapping("/{id}")
-    public void deleteAssessment(@PathVariable Long id){
+    public void deleteAssessment(@PathVariable Long id) {
         assessmentService.deleteAssessment(id);
     }
 

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.*;
 
 @Entity
-@Table(name="students")
+@Table(name = "students")
 public class StudentEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,7 +77,7 @@ public class StudentEntity extends BaseEntity {
         this.departmentEntity = departmentEntity;
     }
 
-    public StudentEntity(){
+    public StudentEntity() {
 
     }
 

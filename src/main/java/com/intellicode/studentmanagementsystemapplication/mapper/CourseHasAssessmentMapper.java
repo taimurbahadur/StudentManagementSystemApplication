@@ -8,7 +8,7 @@ import com.intellicode.studentmanagementsystemapplication.entity.StudentHasCours
 public class CourseHasAssessmentMapper {
 
     // Convert Entity to DTO
-    public CourseHasAssessmentDto mapToDto(CourseHasAssessment courseHasAssessment){
+    public CourseHasAssessmentDto mapToDto(CourseHasAssessment courseHasAssessment) {
         CourseHasAssessmentDto courseHasAssessmentDto = new CourseHasAssessmentDto();
         courseHasAssessmentDto.setId(courseHasAssessment.getId());
         courseHasAssessmentDto.setMarks(courseHasAssessment.getMarks());
@@ -17,7 +17,7 @@ public class CourseHasAssessmentMapper {
 
     // Convert DTO to Entity
 
-    public CourseHasAssessment mapToEntity(CourseHasAssessmentDto courseHasAssessmentDto){
+    public CourseHasAssessment mapToEntity(CourseHasAssessmentDto courseHasAssessmentDto) {
         CourseHasAssessment courseHasAssessment = new CourseHasAssessment();
         courseHasAssessment.setId(courseHasAssessmentDto.getId());
         courseHasAssessment.setMarks(courseHasAssessmentDto.getMarks());

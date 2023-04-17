@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "department")
-public class DepartmentEntity extends BaseEntity{
+public class DepartmentEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,7 +27,6 @@ public class DepartmentEntity extends BaseEntity{
     public void setStudentEntities(Set<StudentEntity> studentEntities) {
         this.studentEntities = studentEntities;
     }
-
 
 
 // Bidirectional one-to-many relation for Department and Courses
