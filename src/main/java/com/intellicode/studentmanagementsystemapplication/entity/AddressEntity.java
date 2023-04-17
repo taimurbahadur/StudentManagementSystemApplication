@@ -1,6 +1,5 @@
 package com.intellicode.studentmanagementsystemapplication.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;

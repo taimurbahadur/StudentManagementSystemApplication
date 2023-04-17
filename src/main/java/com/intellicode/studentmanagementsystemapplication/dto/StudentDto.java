@@ -10,4 +10,5 @@ public class StudentDto {
     private String name;
     private Date dob;
     private String gender;
+    private AddressDto addressDto;
 }
