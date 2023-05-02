@@ -2,7 +2,9 @@ package com.intellicode.studentmanagementsystemapplication.mapper;
 
 import com.intellicode.studentmanagementsystemapplication.dto.DepartmentDto;
 import com.intellicode.studentmanagementsystemapplication.entity.DepartmentEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DepartmentMapper {
 
     // Convert Entity to DTO

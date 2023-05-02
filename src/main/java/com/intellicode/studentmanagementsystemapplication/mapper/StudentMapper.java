@@ -3,7 +3,9 @@ package com.intellicode.studentmanagementsystemapplication.mapper;
 import com.intellicode.studentmanagementsystemapplication.dto.StudentDto;
 import com.intellicode.studentmanagementsystemapplication.entity.StudentEntity;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StudentMapper {
 
     private ModelMapper mapper;

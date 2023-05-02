@@ -1,5 +1,6 @@
 package com.intellicode.studentmanagementsystemapplication.controller;
 
+import com.intellicode.studentmanagementsystemapplication.dto.StudentDto;
 import com.intellicode.studentmanagementsystemapplication.entity.StudentEntity;
 import com.intellicode.studentmanagementsystemapplication.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class StudentController {
     }
 
     @GetMapping
-    public List<StudentEntity> getAllStudents() {
+    public List<StudentDto> getAllStudents() {
         return studentService.getAllStudents();
     }
 
@@ -29,8 +30,8 @@ public class StudentController {
     }
 
     @PostMapping
-    public StudentEntity saveStudent(@RequestBody StudentEntity studentEntity) {
-        return studentService.saveStudent(studentEntity);
+    public StudentDto saveStudent(@RequestBody StudentDto studentDto) {
+        return studentService.saveStudent(studentDto);
     }
 
     @DeleteMapping("/{id}")

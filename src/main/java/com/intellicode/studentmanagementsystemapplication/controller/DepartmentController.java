@@ -1,5 +1,6 @@
 package com.intellicode.studentmanagementsystemapplication.controller;
 
+import com.intellicode.studentmanagementsystemapplication.dto.DepartmentDto;
 import com.intellicode.studentmanagementsystemapplication.entity.DepartmentEntity;
 import com.intellicode.studentmanagementsystemapplication.service.DepartmentService;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class DepartmentController {
     }
 
     @GetMapping
-    public List<DepartmentEntity> getAllDeparment() {
+    public List<DepartmentDto> getAllDeparment() {
         return departmentService.getAllDepartment();
     }
 
@@ -27,8 +28,8 @@ public class DepartmentController {
     }
 
     @PostMapping
-    public DepartmentEntity saveDepartment(@RequestBody DepartmentEntity departmentEntity) {
-        return departmentService.saveDepartment(departmentEntity);
+    public DepartmentDto saveDepartment(@RequestBody DepartmentDto departmentDto) {
+        return departmentService.saveDepartment(departmentDto);
     }
 
     @DeleteMapping("/{id}")

@@ -11,4 +11,5 @@ public class StudentDto {
     private Date dob;
     private String gender;
     private AddressDto addressDto;
+    private DepartmentDto departmentDto;
 }
