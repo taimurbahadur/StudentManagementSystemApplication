@@ -1,5 +1,6 @@
 package com.intellicode.studentmanagementsystemapplication.controller;
 
+import com.intellicode.studentmanagementsystemapplication.dto.CourseHasAssessmentDto;
 import com.intellicode.studentmanagementsystemapplication.entity.CourseHasAssessment;
 import com.intellicode.studentmanagementsystemapplication.entity.StudentHasCourse;
 import com.intellicode.studentmanagementsystemapplication.service.CourseHasAssessmentService;
@@ -17,7 +18,7 @@ public class CourseHasAssessmentController {
     }
 
     @GetMapping
-    public List<CourseHasAssessment> getAllCourseAssessment() {
+    public List<CourseHasAssessmentDto> getAllCourseAssessment() {
         return courseHasAssessmentService.getAllCourseAssessment();
     }
 
@@ -27,8 +28,8 @@ public class CourseHasAssessmentController {
     }
 
     @PostMapping
-    public CourseHasAssessment saveCourseAssessment(@RequestBody CourseHasAssessment courseHasAssessment) {
-        return courseHasAssessmentService.saveCourseAssessment(courseHasAssessment);
+    public CourseHasAssessmentDto saveCourseAssessment(@RequestBody CourseHasAssessmentDto courseHasAssessmentDto) {
+        return courseHasAssessmentService.saveCourseAssessment(courseHasAssessmentDto);
     }
 
     @DeleteMapping("/{id}")

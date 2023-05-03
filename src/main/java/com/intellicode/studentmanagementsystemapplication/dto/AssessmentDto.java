@@ -6,5 +6,6 @@ import lombok.Data;
 public class AssessmentDto {
     private Long id;
     private String name;
-//    private int marks;
+    private Double marks;
+    private CourseDto courseDto;
 }

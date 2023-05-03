@@ -1,5 +1,6 @@
 package com.intellicode.studentmanagementsystemapplication.controller;
 
+import com.intellicode.studentmanagementsystemapplication.dto.AssessmentDto;
 import com.intellicode.studentmanagementsystemapplication.entity.AssessmentEntity;
 import com.intellicode.studentmanagementsystemapplication.service.AssessmentService;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class AssessmentController {
 
 
     @GetMapping
-    public List<AssessmentEntity> getAllAssessments() {
+    public List<AssessmentDto> getAllAssessments() {
         return assessmentService.getAllAssessments();
     }
 
@@ -27,8 +28,8 @@ public class AssessmentController {
     }
 
     @PostMapping
-    public AssessmentEntity saveAssessment(@RequestBody AssessmentEntity assessmentEntity) {
-        return assessmentService.saveAssessment(assessmentEntity);
+    public AssessmentDto saveAssessment(@RequestBody AssessmentDto assessmentDto) {
+        return assessmentService.saveAssessment(assessmentDto);
     }
 
     @DeleteMapping("/{id}")

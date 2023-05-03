@@ -26,9 +26,9 @@ public class DepartmentService {
 
         List<DepartmentEntity> list = departmentRepository.findAllAndIsDeleted();
         List<DepartmentDto> departmentDtos = new ArrayList<>();
-        for (DepartmentEntity departmentEntity: list) {
-            DepartmentDto departmentDto1 = departmentMapper.mapToDto(departmentEntity);
-            departmentDtos.add(departmentDto1);
+        for (DepartmentEntity departmentEntity : list) {
+            DepartmentDto departmentDto = departmentMapper.mapToDto(departmentEntity);
+            departmentDtos.add(departmentDto);
         }
         return departmentDtos;
     }
@@ -41,8 +41,8 @@ public class DepartmentService {
         DepartmentEntity departmentEntity= departmentMapper.mapToEntity(departmentDto);
         departmentRepository.save(departmentEntity);
 
-        DepartmentDto departmentDto2 = departmentMapper.mapToDto(departmentEntity);
-        return departmentDto2;
+        DepartmentDto departmentDto1 = departmentMapper.mapToDto(departmentEntity);
+        return departmentDto1;
     }
 
     public void deleteDepartment(Long id) {

@@ -31,10 +31,12 @@ public class StudentService {
     private DepartmentRepository departmentRepository;
 
     @Autowired
+    private DepartmentMapper departmentMapper;
+
+    @Autowired
     private AddressMapper addressMapper;
     private final AddressRepository addressRepository;
-    @Autowired
-    private DepartmentMapper departmentMapper;
+
 
     public StudentService(StudentRepository studentRepository,
                           DepartmentRepository departmentRepository,
@@ -49,8 +51,8 @@ public class StudentService {
         List<StudentEntity> list = studentRepository.findAllAndIsDeleted();
         List<StudentDto> studentDtos = new ArrayList<>();
         for(StudentEntity studentEntity : list){
-            StudentDto studentDto1 = studentMapper.mapToDto(studentEntity);
-            studentDtos.add(studentDto1);
+            StudentDto studentDto = studentMapper.mapToDto(studentEntity);
+            studentDtos.add(studentDto);
         }
 
         return studentDtos;
@@ -85,10 +87,10 @@ public class StudentService {
         }
         studentRepository.save(studentEntity);
 
-        StudentDto studentDto2 = studentMapper.mapToDto(studentEntity);
-        studentDto2.setDepartmentDto(departmentDto);
-        studentDto2.setAddressDto(addressDto);
-        return studentDto2;
+        StudentDto studentDto1 = studentMapper.mapToDto(studentEntity);
+        studentDto1.setDepartmentDto(departmentDto);
+        studentDto1.setAddressDto(addressDto);
+        return studentDto1;
 
     }
 

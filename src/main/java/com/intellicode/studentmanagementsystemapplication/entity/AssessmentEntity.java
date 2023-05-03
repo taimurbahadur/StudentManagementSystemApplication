@@ -14,7 +14,7 @@ public class AssessmentEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-//    private int marks;
+    private Double marks;
 
     // Bidirectional one-to-many relation for Assessments and CourseHasAssessment
 
@@ -52,10 +52,10 @@ public class AssessmentEntity extends BaseEntity {
     public AssessmentEntity() {
     }
 
-    public AssessmentEntity(Long id, String name, int marks) {
+    public AssessmentEntity(Long id, String name, double marks) {
         this.id = id;
         this.name = name;
-//        this.marks = marks;
+        this.marks = marks;
     }
 
     public Long getId() {
@@ -74,11 +74,11 @@ public class AssessmentEntity extends BaseEntity {
         this.name = name;
     }
 
-//    public int getMarks() {
-//        return marks;
-//    }
+    public Double getMarks() {
+        return marks;
+    }
 
-//    public void setMarks(int marks) {
-//        this.marks = marks;
-//    }
+    public void setMarks(Double marks) {
+        this.marks = marks;
+    }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<DepartmentEntity, Long> {
-    @Query("select d from DepartmentEntity d where (d.isDeleted is null or d.isDeleted = false) and d.id = :id")
+    @Query("select d from DepartmentEntity d where (d.isDeleted is null or d.isDeleted =false) and d.id =:id")
     DepartmentEntity findByIdAndIsDeleted(@Param("id") Long id);
 
     @Query("select d from DepartmentEntity d where d.isDeleted is null or d.isDeleted = false")

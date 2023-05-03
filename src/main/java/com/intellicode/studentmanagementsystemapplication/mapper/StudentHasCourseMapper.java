@@ -3,7 +3,9 @@ package com.intellicode.studentmanagementsystemapplication.mapper;
 import com.intellicode.studentmanagementsystemapplication.dto.StudentDto;
 import com.intellicode.studentmanagementsystemapplication.dto.StudentHasCourseDto;
 import com.intellicode.studentmanagementsystemapplication.entity.StudentHasCourse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StudentHasCourseMapper {
 
     // Convert Entity to DTO

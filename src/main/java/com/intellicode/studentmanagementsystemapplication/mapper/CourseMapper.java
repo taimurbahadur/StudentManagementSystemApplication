@@ -2,7 +2,9 @@ package com.intellicode.studentmanagementsystemapplication.mapper;
 
 import com.intellicode.studentmanagementsystemapplication.dto.CourseDto;
 import com.intellicode.studentmanagementsystemapplication.entity.CourseEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CourseMapper {
 
     // Convert Entity to DTO
@@ -10,7 +12,6 @@ public class CourseMapper {
         CourseDto courseDto = new CourseDto();
         courseDto.setId(courseEntity.getId());
         courseDto.setName(courseEntity.getName());
-//        courseDto.setGrade(courseEntity.getGrade());
         return courseDto;
     }
 
@@ -19,7 +20,6 @@ public class CourseMapper {
         CourseEntity courseEntity = new CourseEntity();
         courseEntity.setId(courseDto.getId());
         courseEntity.setName(courseDto.getName());
-//        courseEntity.setGrade(courseDto.getGrade());
         return courseEntity;
     }
 }

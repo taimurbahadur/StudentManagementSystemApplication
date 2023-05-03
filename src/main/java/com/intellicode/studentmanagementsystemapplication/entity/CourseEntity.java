@@ -12,7 +12,6 @@ public class CourseEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-//    private String grade;
 
     // Bidirectional one-to-many relation for Course and StudentHasCourse
 
@@ -92,11 +91,4 @@ public class CourseEntity extends BaseEntity {
         this.name = name;
     }
 
-//    public String getGrade() {
-//        return grade;
-//    }
-
-//    public void setGrade(String grade) {
-//        this.grade = grade;
-//    }
 }

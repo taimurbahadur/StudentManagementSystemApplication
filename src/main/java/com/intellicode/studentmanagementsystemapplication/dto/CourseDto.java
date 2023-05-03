@@ -6,5 +6,5 @@ import lombok.Data;
 public class CourseDto {
     private Long id;
     private String name;
-//    private String grade;
+    private DepartmentDto departmentDto;
 }

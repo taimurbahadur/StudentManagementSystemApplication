@@ -4,7 +4,9 @@ import com.intellicode.studentmanagementsystemapplication.dto.CourseHasAssessmen
 import com.intellicode.studentmanagementsystemapplication.dto.StudentHasCourseDto;
 import com.intellicode.studentmanagementsystemapplication.entity.CourseHasAssessment;
 import com.intellicode.studentmanagementsystemapplication.entity.StudentHasCourse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CourseHasAssessmentMapper {
 
     // Convert Entity to DTO

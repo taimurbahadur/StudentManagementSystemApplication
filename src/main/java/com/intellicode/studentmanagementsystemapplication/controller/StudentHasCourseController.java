@@ -1,9 +1,8 @@
 package com.intellicode.studentmanagementsystemapplication.controller;
 
-import com.intellicode.studentmanagementsystemapplication.entity.StudentEntity;
+import com.intellicode.studentmanagementsystemapplication.dto.StudentHasCourseDto;
 import com.intellicode.studentmanagementsystemapplication.entity.StudentHasCourse;
 import com.intellicode.studentmanagementsystemapplication.service.StudentHasCourseService;
-import com.intellicode.studentmanagementsystemapplication.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +19,7 @@ public class StudentHasCourseController {
     }
 
     @GetMapping
-    public List<StudentHasCourse> getAllStudentsCourse() {
+    public List<StudentHasCourseDto> getAllStudentsCourse() {
         return studentHasCourseService.getAllStudentsCourse();
     }
 
@@ -30,8 +29,8 @@ public class StudentHasCourseController {
     }
 
     @PostMapping
-    public StudentHasCourse saveStudentCourse(@RequestBody StudentHasCourse studentHasCourse) {
-        return studentHasCourseService.saveStudentCourse(studentHasCourse);
+    public StudentHasCourseDto saveStudentCourse(@RequestBody StudentHasCourseDto studentHasCourseDto) {
+        return studentHasCourseService.saveStudentCourse(studentHasCourseDto);
     }
 
     @DeleteMapping("/{id}")
