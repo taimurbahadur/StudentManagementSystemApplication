@@ -1,8 +1,6 @@
 package com.intellicode.studentmanagementsystemapplication.service;
 
-import com.intellicode.studentmanagementsystemapplication.dto.AssessmentDto;
-import com.intellicode.studentmanagementsystemapplication.dto.CourseHasAssessmentDto;
-import com.intellicode.studentmanagementsystemapplication.dto.StudentHasCourseDto;
+import com.intellicode.studentmanagementsystemapplication.dto.*;
 import com.intellicode.studentmanagementsystemapplication.entity.AssessmentEntity;
 import com.intellicode.studentmanagementsystemapplication.entity.CourseHasAssessment;
 import com.intellicode.studentmanagementsystemapplication.entity.StudentHasCourse;
@@ -39,11 +37,20 @@ public class CourseHasAssessmentService {
     @Autowired
     private StudentHasCourseMapper studentHasCourseMapper;
 
+    public CourseHasAssessmentService(CourseHasAssessmentRepository courseHasAssessmentRepository, CourseHasAssessmentMapper courseHasAssessmentMapper, AssessmentRepository assessmentRepository, AssessmentMapper assessmentMapper, StudentHasCourseRepository studentHasCourseRepository, StudentHasCourseMapper studentHasCourseMapper) {
+        this.courseHasAssessmentRepository = courseHasAssessmentRepository;
+        this.courseHasAssessmentMapper = courseHasAssessmentMapper;
+        this.assessmentRepository = assessmentRepository;
+        this.assessmentMapper = assessmentMapper;
+        this.studentHasCourseRepository = studentHasCourseRepository;
+        this.studentHasCourseMapper = studentHasCourseMapper;
+    }
+
     public List<CourseHasAssessmentDto> getAllCourseAssessment() {
         List<CourseHasAssessment> list = courseHasAssessmentRepository.findAllAndIsDeleted();
         List<CourseHasAssessmentDto> courseHasAssessmentDtos = new ArrayList<>();
 
-        for(CourseHasAssessment courseHasAssessment : list){
+        for (CourseHasAssessment courseHasAssessment : list) {
             CourseHasAssessmentDto courseHasAssessmentDto = courseHasAssessmentMapper.mapToDto(courseHasAssessment);
             courseHasAssessmentDtos.add(courseHasAssessmentDto);
         }
@@ -60,19 +67,17 @@ public class CourseHasAssessmentService {
         AssessmentDto assessmentDto;
         StudentHasCourseDto studentHasCourseDto;
 
-        if(courseHasAssessmentDto.getAssessmentDto() == null){
+        if (courseHasAssessmentDto.getAssessmentDto() == null) {
             throw new RuntimeException("Please enter your assessment name, not my assessment name");
-        }
-        else {
+        } else {
             AssessmentEntity assessmentEntity = assessmentRepository.findByIdAndIsDeleted(courseHasAssessmentDto.getAssessmentDto().getId());
             assessmentDto = assessmentMapper.mapToDto(assessmentEntity);
             courseHasAssessment.setAssessmentEntity(assessmentEntity);
         }
 
-        if(courseHasAssessmentDto.getStudentHasCourseDto() == null){
+        if (courseHasAssessmentDto.getStudentHasCourseDto() == null) {
             throw new RuntimeException("Please enter your course assessment name, not my course assessment name");
-        }
-        else {
+        } else {
             StudentHasCourse studentHasCourse = studentHasCourseRepository.findByIdAndIsDeleted(courseHasAssessmentDto.getStudentHasCourseDto().getId());
             studentHasCourseDto = studentHasCourseMapper.mapToDto(studentHasCourse);
             courseHasAssessment.setStudentHasCourse(studentHasCourse);

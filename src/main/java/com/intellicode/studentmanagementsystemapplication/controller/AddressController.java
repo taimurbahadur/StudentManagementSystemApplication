@@ -1,7 +1,6 @@
 package com.intellicode.studentmanagementsystemapplication.controller;
 
 import com.intellicode.studentmanagementsystemapplication.dto.AddressDto;
-import com.intellicode.studentmanagementsystemapplication.entity.AddressEntity;
 import com.intellicode.studentmanagementsystemapplication.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

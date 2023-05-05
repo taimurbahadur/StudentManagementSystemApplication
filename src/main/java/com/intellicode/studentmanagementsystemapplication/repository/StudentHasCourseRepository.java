@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface StudentHasCourseRepository extends JpaRepository<StudentHasCourse, Long> {
-    @Query("select s from StudentHasCourse s where s.isDeleted is null or s.isDeleted = false and s.id = :id")
+    @Query("select s from StudentHasCourse s where (s.isDeleted is null or s.isDeleted = false) and s.id = :id")
     StudentHasCourse findByIdAndIsDeleted(@Param("id") Long id);
 
     @Query("select s from StudentHasCourse s where s.isDeleted is null or s.isDeleted = false")
